@@ -50,12 +50,23 @@ Merge made by the 'ort' strategy.
 In the **first-project** folder:
 
 ```bash
-git checkout feature-rebase
-git rebase main
+git checkout -b feature-rebase
+```
+
+In the above branch make the changes save it. Then checkout the main branch:
+
+```bash
+git checkout main
+```
+
+Rebase the feature-rebase branch onto the main branch:
+
+```bash
+git rebase feature-rebase
 ```
 
 output:
 
 ```
-Successfully rebased and updated refs/heads/feature-rebase.
+Successfully rebased and updated refs/heads/main.
 ```
