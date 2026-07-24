@@ -32,3 +32,15 @@ In the **first-project** folder:
 git checkout main
 git merge feature-restructure
 ```
+
+output:
+
+```
+Merge made by the 'ort' strategy.
+ BRANCH.md |  34 +++++++++++++++++++++++++++
+ GIT.md    | 106 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ README.md | 129 +++++++++++-------------------------------------------------------------------------------------------
+ 3 files changed, 154 insertions(+), 115 deletions(-)
+ create mode 100644 BRANCH.md
+ create mode 100644 GIT.md
+```
