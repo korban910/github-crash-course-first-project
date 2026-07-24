@@ -44,3 +44,12 @@ Merge made by the 'ort' strategy.
  create mode 100644 BRANCH.md
  create mode 100644 GIT.md
 ```
+
+## 4. Rebase Branch
+
+In the **first-project** folder:
+
+```bash
+git checkout feature-rebase
+git rebase main
+```
