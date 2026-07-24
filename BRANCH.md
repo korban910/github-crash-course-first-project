@@ -70,3 +70,15 @@ output:
 ```
 Successfully rebased and updated refs/heads/main.
 ```
+
+## 5. Add Remote Repo
+
+In the **first-project** folder:
+
+```bash
+git remote add origin git@github.com:korban910/github-crash-course-first-project.git
+git branch -M main
+git push -u origin main
+```
+
+![Git Remote Repo](./images/git_remote.png)
