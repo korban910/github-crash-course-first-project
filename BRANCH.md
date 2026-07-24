@@ -1,3 +1,5 @@
+[Go back to Home](./README.md)
+
 ## 1. Checkout Branch
 
 In the **first-project** folder:

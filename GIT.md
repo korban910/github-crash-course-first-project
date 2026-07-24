@@ -1,3 +1,5 @@
+[Go back to Home](./README.md)
+
 ## 1. Creating the repository and the first commit
 
 In the **first-project** folder:
