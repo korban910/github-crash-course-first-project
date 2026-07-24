@@ -53,3 +53,9 @@ In the **first-project** folder:
 git checkout feature-rebase
 git rebase main
 ```
+
+output:
+
+```
+Successfully rebased and updated refs/heads/feature-rebase.
+```
