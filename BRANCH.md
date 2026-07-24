@@ -81,4 +81,19 @@ git branch -M main
 git push -u origin main
 ```
 
+output:
+
+```
+Enumerating objects: 63, done.
+Counting objects: 100% (63/63), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (60/60), done.
+Writing objects: 100% (63/63), 4.10 MiB | 18.59 MiB/s, done.
+Total 63 (delta 26), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (26/26), done.
+To github.com:korban910/github-crash-course-first-project.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+```
+
 ![Git Remote Repo](./images/git_remote.png)
