@@ -104,3 +104,46 @@ git reset --hard 751a6b1f4b658558c70f0a2248d267fa942dbcc4
 | How it undoes | Adds a new commit that reverses `<id>` | Deletes all commits after `<id>` |
 | History       | Preserved                              | Rewritten (commits lost)         |
 | Safe to use   | Yes                                    | Not recommended                  |
+
+## 6. Getting other people's commits — `git fetch` and `git pull`
+
+When someone else pushes to the remote (e.g. GitHub), your local repository does **not** know about it until you ask.
+
+### Look without changing anything — `git fetch`
+
+```
+git fetch
+git log --oneline main..origin/main
+```
+
+- `git fetch` downloads the new commits from the remote and updates `origin/main` (the local copy of the remote branch).
+- Your own branch and your files stay exactly as they are — nothing is merged yet.
+- `git log --oneline main..origin/main` lists the commits the remote has that you don't, so you can see what is coming.
+
+### Download **and** apply — `git pull --rebase`
+
+```
+git pull --rebase
+```
+
+- `git pull` = `git fetch` + apply the new commits to your current branch.
+- With `--rebase`, your local commits are temporarily set aside, the remote commits are applied first, then your commits are replayed on top. The result is one straight line of history with no extra "Merge branch..." commit.
+- Without `--rebase`, Git joins the two histories with a merge commit instead.
+- Commit or stash your work first — pull refuses to run when you have uncommitted changes it would overwrite.
+
+### If a rebase stops on a conflict
+
+```
+git status              # shows the conflicting files
+# edit the files, keep the correct lines
+git add <file>
+git rebase --continue
+```
+
+- `git rebase --abort` cancels everything and puts the branch back the way it was before the pull.
+
+| | `git fetch` | `git pull --rebase` |
+| ------------------- | --------------------------- | ---------------------------------------- |
+| Downloads commits | Yes | Yes |
+| Changes your branch | No | Yes — replays your commits on top |
+| Typical use | Check what changed remotely | Update your branch before pushing |
