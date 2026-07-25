@@ -21,4 +21,4 @@ Hands-on practice with the core Git commands. Concept notes (What is Git/GitHub,
 
 [Git Branch](./BRANCH.md)
 
-[Git Clone or Fork](./CLONE_OR_FORK.md)
+[Git Clone or Fork](./FORK_CLONE.md)
