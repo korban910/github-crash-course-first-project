@@ -142,8 +142,62 @@ git rebase --continue
 
 - `git rebase --abort` cancels everything and puts the branch back the way it was before the pull.
 
-| | `git fetch` | `git pull --rebase` |
-| ------------------- | --------------------------- | ---------------------------------------- |
-| Downloads commits | Yes | Yes |
-| Changes your branch | No | Yes — replays your commits on top |
-| Typical use | Check what changed remotely | Update your branch before pushing |
+|                     | `git fetch`                 | `git pull --rebase`               |
+| ------------------- | --------------------------- | --------------------------------- |
+| Downloads commits   | Yes                         | Yes                               |
+| Changes your branch | No                          | Yes — replays your commits on top |
+| Typical use         | Check what changed remotely | Update your branch before pushing |
+
+## 7. Copying an existing repository — `git clone`
+
+`git clone` downloads a repository that already exists (for example on GitHub) and creates a ready-to-use local copy — you do **not** run `git init` afterwards.
+
+```
+git clone https://github.com/korban/first-project.git
+git clone https://github.com/korban/first-project.git my-folder-name
+```
+
+- The first form creates a folder named after the repository (`first-project`).
+- The second form puts the same content in a folder you name yourself (`my-folder-name`).
+- Cloning brings the full history, not just the latest files, so `git log`, `checkout`, `revert` all work right away.
+- The repository you cloned from is automatically saved as a remote called **`origin`**, so `git fetch`, `git pull`, and `git push` already know where to go.
+- Private repositories work the same way, but Git asks you to sign in (a GitHub token or an SSH key) because the URL is not publicly readable.
+
+## 8. Looking at the remotes — `git remote` and `git branch -r`
+
+A **remote** is a nickname for a repository URL stored somewhere else (usually GitHub). "`origin`" is just the default nickname Git gives to the repository you cloned from — the name has no special power.
+
+### Which remotes does this repository know about?
+
+```
+git remote
+origin
+
+git remote -v
+origin  https://github.com/korban/first-project.git (fetch)
+origin  https://github.com/korban/first-project.git (push)
+```
+
+- `git remote` lists the nicknames only.
+- `git remote -v` ("verbose") also shows the URL behind each nickname, once for downloading (`fetch`) and once for uploading (`push`).
+- `git remote get-url origin` prints just the URL of a single remote when that is all you need.
+
+### Which branches exist on the remote?
+
+```
+git branch          # branches on your computer
+git branch -r       # branches on the remote
+  origin/HEAD -> origin/main
+  origin/main
+
+git branch -a       # both lists together
+```
+
+- Names like `origin/main` are **read-only copies** of the remote branches. You do not work on them directly.
+- These copies only refresh when you run `git fetch` or `git pull` — if a teammate pushed a new branch a minute ago, you will not see it until then.
+- To start working on a remote branch, switch to it by name and Git creates a matching local branch for you:
+
+```
+git fetch
+git checkout feature-login
+```
